@@ -1,8 +1,8 @@
-var app = require('express')();
+﻿var app = require('express')(); 
 var server = require('http').createServer(app);
 // http server를 socket.io server로 upgrade한다
 var io = require('socket.io')(server);
-
+//Test
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
