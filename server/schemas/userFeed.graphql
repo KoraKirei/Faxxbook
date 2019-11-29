@@ -1,0 +1,10 @@
+scalar Date
+
+type UserFeed {
+  id: Int
+  uid: String
+  content: String
+  createdAt: Date
+  updatedAt: Date
+  userId: Int
+}

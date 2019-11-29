@@ -1,0 +1,12 @@
+# import User from 'user.graphql'
+# import UserFeed from 'userFeed.graphql'
+
+type Query {
+  User: [User],
+  Feed: [UserFeed],
+}
+
+type Mutation {
+  addUser(uid: String!, email: String!, username: String!): User,
+  updateTitle(conId: Int!, conTitle: String): UserFeed
+}
