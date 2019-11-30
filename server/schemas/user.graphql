@@ -1,0 +1,11 @@
+type User {
+  id: Int,
+  uid: String,
+  email: String,
+  username: String,
+  accessToken: String,
+  qnaPoint: Int,
+  userSearhedWord_1: String,
+  userSearhedWord_2: String,
+  userSearhedWord_3: String,
+}

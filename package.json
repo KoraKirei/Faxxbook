@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kireiii/faxxbook.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kireiii/faxxbook/issues"
+  },
+  "homepage": "https://github.com/kireiii/faxxbook#readme"
+}

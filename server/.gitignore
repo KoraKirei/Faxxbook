@@ -1,0 +1,10 @@
+.env
+dev.env
+prod.env
+test.env
+
+yarn-error.log
+yarn.lock
+package-lock.json
+.DS_STORE
+node_modules
