@@ -2,7 +2,7 @@ import { Resolvers } from '../generated/graphql';
 
 const resovler: Resolvers = {
   Query: {
-    getUserFeed: async (_, { uid, limit, page }, { models }, info) => {
+    getFeed: async (_, { uid, limit, page }, { models }, info) => {
       return await models.UserFeed.findAll({
         where: { uid },
         order: ['createdAt', 'DESC'],
@@ -12,21 +12,21 @@ const resovler: Resolvers = {
     },
   },
   Mutation: {
-    addUserFeed: async (_, { userId, content }, { models }, info) => {
+    addFeed: async (_, { userId, content }, { models }, info) => {
       return await models.User.create({
         userId, content
       });
     },
-    updateUserFeed: async (_, { userId, content }, { models }, info) => {
+    updateFeed: async (_, { id, content }, { models }, info) => {
       return await models.User.update({
         content
       }, {
-        where: { userId }
+        where: { id }
       });
     },
-    delUserFeed: async (_, { userId }, { models }, info) => {
+    delFeed: async (_, { id }, { models }, info) => {
       return await models.User.destroy({
-        where: { userId }
+        where: { id }
       });
     },
   }

@@ -1,11 +1,12 @@
+scalar Date
+
 type User {
-  id: Int,
-  uid: String,
-  email: String,
-  username: String,
-  accessToken: String,
-  qnaPoint: Int,
-  userSearhedWord_1: String,
-  userSearhedWord_2: String,
-  userSearhedWord_3: String,
+  id: String!,
+  email: String!,
+  username: String!,
+  profilePhotoUrl: String!,
+  coverPhotoUrl: String,
+  qnaPoint: Int!,
+  createdAt: Date,
+  updatedAt: Date,
 }

@@ -1,43 +1,32 @@
 import { DataTypes, Model } from 'sequelize';
 
-import UserFeed from './UserFeed';
-import UserFeedReply from './UserFeedReply';
+import FeedUser from './Feed';
+import FeedUserReply from './FeedReply';
+
 import sequelize from '../db';
 
 const { INTEGER, STRING } = DataTypes;
 
 class User extends Model {
-  public id!: number;
-
-  public uid!: string;
+  public id!: string;
 
   public email!: string;
 
   public username!: string;
 
-  public accessToken: string;
+  public profilePhotoUrl!: string;
 
-  public qnaPoint!: string;
+  public coverPhotoUrl!: string;
 
-  public userSearhedWord_1: string;
+  public readonly createdAt!: Date
 
-  public userSearhedWord_2: string;
-
-  public userSearhedWord_3: string;
-
-  public readonly createdAt: Date
-
-  public readonly updatedAt: Date
+  public readonly updatedAt!: Date
 }
 User.init(
   {
     id: {
-      type: INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    uid: {
       type: STRING,
+      primaryKey: true,
       allowNull: false
     },
     email: {
@@ -48,27 +37,21 @@ User.init(
       type: STRING,
       allowNull: false
     },
-    accessToken: {
-      type: STRING,
-      allowNull: false
-    },    
     qnaPoint: {
-      type: STRING,
+      type: INTEGER,
       allowNull: false,
       defaultValue: 0
     },
-    userSearhedWord_1: {
+    profilePhotoUrl: {
       type: STRING,
-      allowNull: true
+      allowNull: false,
+      defaultValue: 'http://postfiles16.naver.net/20140606_111/sjinwon2_1402052862659ofnU1_PNG/130917_224626.png?type=w1'
     },
-    userSearhedWord_2: {
+    coverPhotoUrl: {
       type: STRING,
-      allowNull: true
-    },
-    userSearhedWord_3: {
-      type: STRING,
-      allowNull: true
-    },
+      allowNull: false,
+      defaultValue: 'http://www.analogouscolors.com/jpg/130c0e.jpg'
+    }
   },
   {
     sequelize,
@@ -76,7 +59,7 @@ User.init(
   }
 );
 
-User.hasMany(UserFeed, { onDelete: 'cascade' });
-User.hasMany(UserFeedReply, { onDelete: 'cascade' });
+User.hasMany(FeedUser, { onDelete: 'cascade' });
+User.hasMany(FeedUserReply, { onDelete: 'cascade' });
 
 export default User;

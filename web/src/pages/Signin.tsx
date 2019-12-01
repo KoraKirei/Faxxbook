@@ -3,34 +3,38 @@ import FacebookLogin, { ReactFacebookLoginInfo } from 'react-facebook-login';
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
-const ADD_USER = gql`
-  mutation addUser($uid: String!, $email: String!, $username: String!) {
-    addUser(uid: $uid, email: $email, username: $username) {
+const USER_LOGIN = gql`
+  mutation userLogin($id: String!, $email: String!, $username: String!) {
+    userLogin(id: $id, email: $email, username: $username) {
       username
     }
   }
 `
 
 const GET_USER = gql`
-  query {
-    getUser {
-      id, uid
+  query getUser($id: String!) {
+    getUser(id: $id) {
+      id, username, email
     }
   }
 `
 
 const Signin = () => {
 
-  const getUser = useQuery(GET_USER);
+  const getUser = useQuery(GET_USER, {
+    variables: {
+      id: "180883496377088"
+    }
+  });
   console.log(getUser.data);
 
-  const [addUser] = useMutation(ADD_USER);
+  const [userLogin] = useMutation(USER_LOGIN);
 
   const responseFacebook = (response: ReactFacebookLoginInfo) => {
-    addUser({ variables: {
-      uid: response.id,
+    userLogin({ variables: {
+      id: response.id,
       email: response.email,
-      username: response.name
+      username: response.name,
     }});
   }
   

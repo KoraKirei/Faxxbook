@@ -1,36 +1,35 @@
 import { DataTypes, Model } from 'sequelize';
 
+import FeedReplyFile from './FeedReplyFile';
 import sequelize from '../db';
 
 const { INTEGER, STRING } = DataTypes;
 
-class UserFeedFile extends Model {
+class FeedReply extends Model {
   public id!: number;
 
-  public filePath!: string;
+  public uid!: string;
 
-  public fileIndex!: string;
+  public level!: number;
+
+  public content!: string;
 
   public readonly createdAt: Date
 
   public readonly updatedAt: Date
 }
 
-UserFeedFile.init(
+FeedReply.init(
   {
     id: {
       type: INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
-    filePath: {
+    content: {
       type: STRING,
-      allowNull: false
-    },
-    fileIndex: {
-      type: STRING,
-      allowNull: false
-    },
+      allowNull: false      
+    }
   },
   {
     sequelize,
@@ -38,4 +37,6 @@ UserFeedFile.init(
   }
 );
 
-export default UserFeedFile;
+FeedReply.hasMany(FeedReplyFile, { onDelete: 'cascade' });
+
+export default FeedReply;

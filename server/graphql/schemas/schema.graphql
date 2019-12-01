@@ -1,16 +1,20 @@
 # import User from 'user.graphql'
-# import UserFeed from 'userFeed.graphql'
+# import Feed from 'feed.graphql'
 
 type Query {
-  getUser(uid: String!): User,
-  getUserFeed(uid: String, limit: Int!, page: Int!): UserFeed
+  # User
+  getUser(id: String!): User,
+  # Feed
+  getFeed(id: String!, uid: String, limit: Int!, page: Int!): Feed
 }
 
 type Mutation {
-  addUser(uid: String!, email: String!, username: String!): User,
-  updateUser(uid: String!, username: String, qnaPoint: String): User,
-  delUser(uid: String!): User,
-  addUserFeed(userId: String!, content: String!): UserFeed,
-  updateUserFeed(userId: String!, content: String): UserFeed,
-  delUserFeed(userId: String!): UserFeed,
+  # User
+  userLogin(id: String!, email: String, username: String, profilePhotoUrl: String, coverPhotoUrl: String): User,
+  updateUser(id: String!, username: String, profilePhotoUrl: String, coverPhotoUrl: String, qnaPoint: Int): User,
+  delUser(id: String!): User,
+  # Feed
+  addFeed(userId: String!, content: String!): Feed,
+  updateFeed(id: Int!, content: String): Feed,
+  delFeed(id: Int!): Feed,
 }

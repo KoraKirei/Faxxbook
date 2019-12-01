@@ -2,30 +2,39 @@ import { Resolvers } from '../generated/graphql';
 
 const resovler: Resolvers = {
   Query: {
-    getUser: async (_, { uid }, { models }, info) => {
+    getUser: async (_, { id }, { models }, info) => {
       const user = await models.User.findOne({
-        where: { uid }
+        where: { id }
       });
       return user;
     },
   },
   Mutation: {
-    addUser: async (_, { uid, email, username }, { models }, info) => {
-      return await models.User.findOrCreate({
-        where: { uid },
-        defaults: { email, username }
+    userLogin: async (_, { id, email, username }, { models }, info) => {
+      const exUser = await models.User.findOne({
+        where: { id }
+      });
+      // 기존 회원일 경우
+      if(exUser) {
+        return exUser;
+      }
+
+      // 신규 회원일 경우
+      return await models.User.create({
+        id, email, username
       });
     },
-    updateUser: async (_, { uid, username, qnaPoint }, { models }, info) => {
+    // QnaPoint 정보와 Username 정보 변경 가능.
+    updateUser: async (_, { id, username, profilePhotoUrl, coverPhotoUrl, qnaPoint }, { models }, info) => {
       return await models.User.update({
-        username, qnaPoint
+        username, profilePhotoUrl, coverPhotoUrl, qnaPoint
       }, {
-        where: { uid }
+        where: { id }
       });
     },
-    delUser: async (_, { uid }, { models }, info) => {
+    delUser: async (_, { id }, { models }, info) => {
       return await models.User.destroy({
-        where: { uid }
+        where: { id }
       });
     },    
   }

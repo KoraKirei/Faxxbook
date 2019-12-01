@@ -4,19 +4,17 @@ import sequelize from '../db';
 
 const { INTEGER, STRING } = DataTypes;
 
-class UserFeedReplyFile extends Model {
+class FeedReplyFileByUser extends Model {
   public id!: number;
 
   public filePath!: string;
-
-  public fileIndex!: string;
 
   public readonly createdAt: Date
 
   public readonly updatedAt: Date
 }
 
-UserFeedReplyFile.init(
+FeedReplyFileByUser.init(
   {
     id: {
       type: INTEGER,
@@ -27,10 +25,6 @@ UserFeedReplyFile.init(
       type: STRING,
       allowNull: false
     },
-    fileIndex: {
-      type: STRING,
-      allowNull: false
-    },
   },
   {
     sequelize,
@@ -38,4 +32,4 @@ UserFeedReplyFile.init(
   }
 );
 
-export default UserFeedReplyFile;
+export default FeedReplyFileByUser;

@@ -1,13 +1,13 @@
 import User from './User';
-import UserFeed from './UserFeed';
-import UserFeedFile from './UserFeedFile';
-import UserFeedReply from './UserFeedReply';
-import UserFeedReplyFile from './UserFeedReplyFile';
+import FeedByUser from './Feed';
+import FeedFile from './FeedFile';
+import FeedReply from './FeedReply';
+import FeedReplyFile from './FeedReplyFile';
 
 export default {
   User,
-  UserFeed,
-  UserFeedFile,
-  UserFeedReply,
-  UserFeedReplyFile,
+  FeedByUser,
+  FeedFile,
+  FeedReply,
+  FeedReplyFile,
 }
