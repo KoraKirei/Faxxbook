@@ -1,7 +1,7 @@
 scalar Date
 
 type Feed {
-  id: Int!,
+  id: ID!,
   content: String!,
   userId: Int!,
   createdAt: Date!,
@@ -9,7 +9,7 @@ type Feed {
 }
 
 type FeedFile {
-  id: Int!,
+  id: ID!,
   filePath: String!,
   feedId: Int!,
   createdAt: Date!,
@@ -17,7 +17,7 @@ type FeedFile {
 }
 
 type FeedReply {
-  id: Int!,
+  id: ID!,
   content: String!,
   feedId: Int!,
   createdAt: Date!,
@@ -25,7 +25,7 @@ type FeedReply {
 }
 
 type FeedReplyFile {
-  id: Int!,
+  id: ID!,
   filePath: String!,
   feedReplyId: Int!,
   createdAt: Date!,

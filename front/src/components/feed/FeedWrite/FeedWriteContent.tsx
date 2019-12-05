@@ -32,13 +32,11 @@ const FeedWriteContent = () => {
 
   const handleClickOpen = () => {
     client.writeData({
-      // data 무조건 써야 함.
       data: {
         open: true
       }
     });
   }
-  console.log(client)
 
   return (
     <>

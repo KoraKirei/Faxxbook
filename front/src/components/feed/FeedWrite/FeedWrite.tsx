@@ -11,16 +11,7 @@ const GET_OPEN = gql`
   }
 `;
 
-const GET_FEED = gql`
-  {
-    tbContent {
-      userId, conTitle, conBody, conRegDt
-    }
-  }
-`
-
 const FeedWrite = () => {
-  const feed = useQuery(GET_FEED);
 
   const { data } = useQuery(GET_OPEN);
   return (

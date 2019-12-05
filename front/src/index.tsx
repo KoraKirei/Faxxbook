@@ -21,7 +21,7 @@ const client = new ApolloClient({
 // 초기 값
 client.writeData({
   data: {
-    open: false
+    open: false, user: null
   }
 })
 

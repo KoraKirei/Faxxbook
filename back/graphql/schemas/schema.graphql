@@ -3,18 +3,18 @@
 
 type Query {
   # User
-  getUser(id: String!): User,
+  getUser(id: ID!): User,
   # Feed
-  getFeed(id: String!, uid: String, limit: Int!, page: Int!): Feed
+  getFeed(id: ID!, uid: String, limit: Int!, page: Int!): Feed
 }
 
 type Mutation {
   # User
-  userLogin(id: String!, email: String, username: String, profilePhotoUrl: String, coverPhotoUrl: String): User,
-  updateUser(id: String!, username: String, profilePhotoUrl: String, coverPhotoUrl: String, qnaPoint: Int): User,
-  delUser(id: String!): User,
+  loginUser(id: ID!, email: String, username: String, profilePhotoUrl: String, coverPhotoUrl: String): User,
+  updateUser(id: ID!, username: String, profilePhotoUrl: String, coverPhotoUrl: String, qnaPoint: Int): User,
+  delUser(id: ID!): User,
   # Feed
-  addFeed(userId: String!, content: String!): Feed,
-  updateFeed(id: Int!, content: String): Feed,
-  delFeed(id: Int!): Feed,
+  addFeed(userId: ID!, content: String!): Feed,
+  updateFeed(id: ID!, content: String): Feed,
+  delFeed(id: ID!): Feed,
 }

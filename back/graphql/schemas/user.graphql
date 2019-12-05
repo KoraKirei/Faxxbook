@@ -1,7 +1,7 @@
 scalar Date
 
 type User {
-  id: String!,
+  id: ID!,
   email: String!,
   username: String!,
   profilePhotoUrl: String!,

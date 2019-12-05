@@ -10,7 +10,7 @@ const resovler: Resolvers = {
     },
   },
   Mutation: {
-    userLogin: async (_, { id, email, username }, { models }, info) => {
+    loginUser: async (_, { id, email, username }, { models }, info) => {
       const exUser = await models.User.findOne({
         where: { id }
       });
@@ -26,9 +26,12 @@ const resovler: Resolvers = {
     },
     // QnaPoint 정보와 Username 정보 변경 가능.
     updateUser: async (_, { id, username, profilePhotoUrl, coverPhotoUrl, qnaPoint }, { models }, info) => {
-      return await models.User.update({
+      await models.User.update({
         username, profilePhotoUrl, coverPhotoUrl, qnaPoint
       }, {
+        where: { id }
+      });
+      return await models.User.findOne({
         where: { id }
       });
     },

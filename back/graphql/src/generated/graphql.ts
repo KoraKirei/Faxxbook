@@ -14,7 +14,7 @@ export type Scalars = {
 
 export type Feed = {
    __typename?: 'Feed',
-  id: Scalars['Int'],
+  id: Scalars['ID'],
   content: Scalars['String'],
   userId: Scalars['Int'],
   createdAt: Scalars['Date'],
@@ -23,7 +23,7 @@ export type Feed = {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  userLogin?: Maybe<User>,
+  loginUser?: Maybe<User>,
   updateUser?: Maybe<User>,
   delUser?: Maybe<User>,
   addFeed?: Maybe<Feed>,
@@ -32,8 +32,8 @@ export type Mutation = {
 };
 
 
-export type MutationUserLoginArgs = {
-  id: Scalars['String'],
+export type MutationLoginUserArgs = {
+  id: Scalars['ID'],
   email?: Maybe<Scalars['String']>,
   username?: Maybe<Scalars['String']>,
   profilePhotoUrl?: Maybe<Scalars['String']>,
@@ -42,7 +42,7 @@ export type MutationUserLoginArgs = {
 
 
 export type MutationUpdateUserArgs = {
-  id: Scalars['String'],
+  id: Scalars['ID'],
   username?: Maybe<Scalars['String']>,
   profilePhotoUrl?: Maybe<Scalars['String']>,
   coverPhotoUrl?: Maybe<Scalars['String']>,
@@ -51,24 +51,24 @@ export type MutationUpdateUserArgs = {
 
 
 export type MutationDelUserArgs = {
-  id: Scalars['String']
+  id: Scalars['ID']
 };
 
 
 export type MutationAddFeedArgs = {
-  userId: Scalars['String'],
+  userId: Scalars['ID'],
   content: Scalars['String']
 };
 
 
 export type MutationUpdateFeedArgs = {
-  id: Scalars['Int'],
+  id: Scalars['ID'],
   content?: Maybe<Scalars['String']>
 };
 
 
 export type MutationDelFeedArgs = {
-  id: Scalars['Int']
+  id: Scalars['ID']
 };
 
 export type Query = {
@@ -79,12 +79,12 @@ export type Query = {
 
 
 export type QueryGetUserArgs = {
-  id: Scalars['String']
+  id: Scalars['ID']
 };
 
 
 export type QueryGetFeedArgs = {
-  id: Scalars['String'],
+  id: Scalars['ID'],
   uid?: Maybe<Scalars['String']>,
   limit: Scalars['Int'],
   page: Scalars['Int']
@@ -92,7 +92,7 @@ export type QueryGetFeedArgs = {
 
 export type User = {
    __typename?: 'User',
-  id: Scalars['String'],
+  id: Scalars['ID'],
   email: Scalars['String'],
   username: Scalars['String'],
   profilePhotoUrl: Scalars['String'],
@@ -174,8 +174,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
-  String: ResolverTypeWrapper<Scalars['String']>,
+  ID: ResolverTypeWrapper<Scalars['ID']>,
   User: ResolverTypeWrapper<User>,
+  String: ResolverTypeWrapper<Scalars['String']>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
   Date: ResolverTypeWrapper<Scalars['Date']>,
   Feed: ResolverTypeWrapper<Feed>,
@@ -186,8 +187,9 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {},
-  String: Scalars['String'],
+  ID: Scalars['ID'],
   User: User,
+  String: Scalars['String'],
   Int: Scalars['Int'],
   Date: Scalars['Date'],
   Feed: Feed,
@@ -200,7 +202,7 @@ export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
 }
 
 export type FeedResolvers<ContextType = any, ParentType extends ResolversParentTypes['Feed'] = ResolversParentTypes['Feed']> = {
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   content?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
   createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>,
@@ -208,7 +210,7 @@ export type FeedResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  userLogin?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationUserLoginArgs, 'id'>>,
+  loginUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationLoginUserArgs, 'id'>>,
   updateUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationUpdateUserArgs, 'id'>>,
   delUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationDelUserArgs, 'id'>>,
   addFeed?: Resolver<Maybe<ResolversTypes['Feed']>, ParentType, ContextType, RequireFields<MutationAddFeedArgs, 'userId' | 'content'>>,
@@ -222,7 +224,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   username?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   profilePhotoUrl?: Resolver<ResolversTypes['String'], ParentType, ContextType>,

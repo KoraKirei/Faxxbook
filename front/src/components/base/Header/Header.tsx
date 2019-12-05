@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+
 import { makeStyles, AppBar, Toolbar, CssBaseline, TextField, Avatar, Button } from '@material-ui/core';
 import { Facebook, Search, Help, Notifications, Message, People } from '@material-ui/icons';
 import { deepOrange } from '@material-ui/core/colors';
@@ -22,14 +25,12 @@ const useStyles = makeStyles(() => ({
     marginRight: 40,    
     width: 26,
     height: 26,
-    backgroundColor: "#f5f6f7"    
+    backgroundColor: "#f5f6f7"
   },
   userAvatar: {
     marginRight: 5,
     width: 25,
     height: 25,
-    color: '#fff',
-    backgroundColor: deepOrange[500],
   },
   profileButton: {
     color: '#fff',
@@ -67,8 +68,17 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const Header: React.FC<{}> = () => {
+const GET_USER = gql`
+  {
+    user @client {
+      profilePhotoUrl, coverPhotoUrl, id
+    }
+  }
+`;
 
+const Header: React.FC<{}> = () => {
+  const { data } = useQuery(GET_USER);
+  const { user } = data;
   const classes = useStyles();
 
   return(
@@ -88,12 +98,9 @@ const Header: React.FC<{}> = () => {
               className: classes.textFieldInput
             }}
           />
-          <Avatar variant="square" className={classes.searchAvatar}>
-            <Search className={classes.searchIcon} />
-          </Avatar>
-          <Link to="/profile/jongjjang03" className={classes.link}>
+          <Link to={"/profile/" + user.id} className={classes.link}>
             <Button className={classes.profileButton}>
-              <Avatar className={classes.userAvatar}>J</Avatar>
+              <Avatar className={classes.userAvatar} src={user.profilePhotoUrl}>J</Avatar>
               종호
             </Button>
           </Link>
