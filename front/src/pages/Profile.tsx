@@ -35,7 +35,7 @@ const Profile = () => {
         </Card>
       </Box>
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={10}/>
 
         
       <ChatBar />

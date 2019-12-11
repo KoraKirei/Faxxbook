@@ -1,9 +1,12 @@
 import React from 'react';
 import { useApolloClient } from '@apollo/react-hooks';
 import { makeStyles, Dialog, Card, List, ListItem, ListItemAvatar, ListItemText, Button } from '@material-ui/core';
+import CardMedia from '@material-ui/core/CardMedia';
+
 import { AddComment } from '@material-ui/icons';
 
 import FeedWriteContent from './FeedWriteContent';
+import FeedWriteImage from './FeedWriteImage';
 
 const useStyles = makeStyles(() => ({
   postButton: {
@@ -32,11 +35,18 @@ const FeedWriteDialog: React.FC<props> = ({ open }) => {
     });
   }
 
+  const uploadImages = () => {
+    // let uploadImages = files.
+  }
+
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth='xs'>
       <FeedWriteContent />
+      <FeedWriteImage />
       <Card>
         <List>
+          <ListItem>
+          </ListItem>
           <ListItem>
             <Button>
               <ListItemAvatar>

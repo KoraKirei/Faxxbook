@@ -1,0 +1,31 @@
+{
+  "name": "faxxbook-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/fileUploadToS3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/fileUploadToS3.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.566.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "json-loader": "^0.5.7",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.19.4"
+  }
+}
