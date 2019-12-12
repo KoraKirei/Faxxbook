@@ -1,7 +1,7 @@
 const env = process.env.NODE_ENV;
 const dotenv = require('dotenv');
 const path = require('path');
-
+console.log(123);
 // prettier-ignore
 const envPath =
   env === 'production'
