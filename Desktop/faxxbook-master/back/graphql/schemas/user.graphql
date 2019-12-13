@@ -1,0 +1,12 @@
+scalar Date
+
+type User {
+  id: ID!,
+  email: String!,
+  username: String!,
+  profilePhotoUrl: String!,
+  coverPhotoUrl: String,
+  qnaPoint: Int!,
+  createdAt: Date,
+  updatedAt: Date,
+}

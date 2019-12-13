@@ -1,0 +1,33 @@
+scalar Date
+
+type Feed {
+  id: ID!,
+  content: String!,
+  userId: Int!,
+  createdAt: Date!,
+  updatedAt: Date!
+}
+
+type FeedFile {
+  id: ID!,
+  filePath: String!,
+  feedId: Int!,
+  createdAt: Date!,
+  updatedAt: Date!  
+}
+
+type FeedReply {
+  id: ID!,
+  content: String!,
+  feedId: Int!,
+  createdAt: Date!,
+  updatedAt: Date!
+}
+
+type FeedReplyFile {
+  id: ID!,
+  filePath: String!,
+  feedReplyId: Int!,
+  createdAt: Date!,
+  updatedAt: Date!  
+}
