@@ -6,6 +6,10 @@ type Query {
   getUser(id: ID!): User,
   # Feed
   getFeed(id: ID!, uid: String, limit: Int!, page: Int!): Feed
+  # TbContent에서 데이터 받아오기
+  getTbContent(conId: Int!, userId: String!, conTitle: String!, conBody: String!, conRegDt: Date!, conModifyDt: Date!): TbContent
+  # TbContentFile에서 데이터 받아오기
+  getTbContentFile(fileId: Int!, conId: Int!, filePath: String!, fileIndex: Int!): TbContentFile
 }
 
 type Mutation {

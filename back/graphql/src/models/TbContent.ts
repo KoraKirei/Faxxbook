@@ -42,4 +42,4 @@ TbContent.init(
   }
 )
 
-export default FeedFile;
+export default TbContent;

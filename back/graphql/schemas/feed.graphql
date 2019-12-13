@@ -9,6 +9,7 @@ type Feed {
 }
 
 type FeedFile {
+
   id: ID!,
   filePath: String!,
   feedId: Int!,
@@ -30,4 +31,20 @@ type FeedReplyFile {
   feedReplyId: Int!,
   createdAt: Date!,
   updatedAt: Date!  
+}
+
+type TbContent {
+  conId: Int!,
+  userId: String,
+  conTile: String,
+  conBody: String,
+  conRegDt: Date!,
+  conModifyDt: Date!
+}
+
+type TbContentFile {
+  fileId: Int!,
+  conId: Int!,
+  filePath: String!,
+  fileIndex: Int
 }

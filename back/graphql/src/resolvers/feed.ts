@@ -10,6 +10,9 @@ const resovler: Resolvers = {
         limit,
       });
     },
+    // getTbContent: async (_, __, {models}, info) => {
+    //   return await models.
+    // }
   },
   Mutation: {
     addFeed: async (_, { userId, content }, { models }, info) => {

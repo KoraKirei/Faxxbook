@@ -4,7 +4,7 @@ import sequelize from '../db';
 
 const { INTEGER, STRING } = DataTypes;
 
-class TbContent extends Model {
+class TbContentFile extends Model {
   public conId! : number;
 
   public fileId! : string;
@@ -14,21 +14,21 @@ class TbContent extends Model {
   public fileIndex! : string;
 }
 
-TbContent.init(
+TbContentFile.init(
   {
     conId: {
-      type:INTEGER,
-      autoIncrement: true 
+      type:INTEGER
     },
     fileId: {
-      type: STRING,
-      primaryKey: true
+      type: INTEGER,
+      primaryKey: true,
+      autoIncrement: true 
     },
     filePath: {
       type: STRING
     },
     fileIndex: {
-      type: STRING
+      type: INTEGER
     }
   },
   {
@@ -37,4 +37,4 @@ TbContent.init(
   }
 )
 
-export default FeedFile;
+export default TbContentFile;
