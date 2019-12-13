@@ -1,5 +1,5 @@
 // material ui
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -16,10 +16,21 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import ReactPlayer from 'react-player';
+import gql from 'graphql-tag';
+import { useApolloClient, useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
 
 // custom component
 import FeedImgContainer from '../FeedContent/FeedImgContainer'
 import FeedMoreVerIconDropDown from './FeedMoreVerDropDown'
+
+// Schema
+const GET_FEED = gql`
+  mutation loginUser($id: ID!, $email: String!, $username: String!) {
+    loginUser(id: $id, email: $email, username: $username) {
+      username
+    }
+  }
+`
 
 export default function RecipeReviewCard() {
   const useStyles = makeStyles(theme => ({
